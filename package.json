@@ -1,13 +1,29 @@
 {
-    "name": "src",
-    "version": "1.0.0",
-    "description": "",
-    "main": "ProductManager.js",
-    "type": "module",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "Sergio Terroso Cabrera <sergio.terroso@gmail.com>",
-    "license": "ISC"
+  "name": "src",
+  "version": "1.0.0",
+  "main": "ProductManager.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "router": "nodemon --inspect ./src/routes/app.js",
+    "static": "nodemon --inspect ./src/static/app.js"
+  },
+  "keywords": [],
+  "author": "Luis Tang <luis.daniel.tang@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luistang11/BackendCoder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luistang11/BackendCoder/issues"
+  },
+  "homepage": "https://github.com/luistang11/BackendCoder#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "multer": "^1.4.5-lts.1"
   }
+}

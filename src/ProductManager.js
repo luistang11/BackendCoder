@@ -1,9 +1,9 @@
 import { writeFileSync, readFileSync} from 'fs';
 
-export default class ProductManager {
+class ProductManager {
   constructor() {   
     this.products = [];
-    this.path='./archivos.txt';
+    this.path='./archivos.json';
   }
   //private methods
   #getMaxId() {
@@ -14,25 +14,27 @@ export default class ProductManager {
   return maxId;
   }
   #readFile(){
-    return readFileSync('archivos.txt','utf-8')
+    return readFileSync('archivos.json','utf-8')
   }
   //methods
-  addProduct(title,description,price,thumbnail,code,stock) {
-    const isInProducts=this.products.find(item=>item.code===code)?true:false;
-
+  addProduct({title,description,code,price,status,stock,category,thumbnail}) {
+    
+    const isInProducts=this.products.find(item=>item.code===code);
     const product = {
         id:this.#getMaxId() + 1,
         title,
         description,
-        price,
-        thumbnail,
         code,
+        price,
+        status:true,
         stock,
+        category,
+        thumbnail
     };
 
     if(!isInProducts){
         this.products.push(product);
-        writeFileSync(this.path,JSON.stringify(this.products)+`\n`)
+        writeFileSync(this.path,JSON.stringify(this.products))
     }
     else{
         console.log('code repetido')
@@ -81,3 +83,5 @@ export default class ProductManager {
         }
     }
 };
+
+export default new ProductManager();

@@ -28,16 +28,23 @@ router.get("/:id", (req, res) => {
 router.post('/',(req,res)=>{
     productos.addProduct(req.body)
     res.status(201).json(productos.getProducts());
+    const productsList = productos.getProducts();
+    req.io.emit('listChange', productsList);
 })
 
 router.delete('/:id', (req, res)=>{
-    productos.deleteProduct(id)
+    const {id}=req.params;
+    productos.deleteProduct(Number(id))
     res.status(200).json(productos.getProducts());
+    const productsList = productos.getProducts();
+    req.io.emit('listChange', productsList);
 })
 router.put('/:id', (req, res)=>{
     const {id}=req.params;
-    productos.updateProduct(id,req.body)
+    productos.updateProduct(Number(id),req.body)
     res.status(200).json(productos.getProducts());
+    const productsList = productos.getProducts();
+    req.io.emit('listChange', productsList);
 })
 
 export default router;

@@ -38,7 +38,7 @@ export async function createProduct(req, res) {
     const {body} = req;
     const response=await ProductService.createProduct(body);
     res.json({
-        user:response,
+        product:response,
         status: STATUS.SUCCESS,
     })
   } catch (error) {
@@ -55,7 +55,7 @@ export async function updateProduct(req, res) {
     const { body } = req;
     const response = await ProductService.updateProduct(idProducto, body);
     res.status(201).json({
-      user: response,
+      product: response,
       status: STATUS.SUCCESS,
     });
   } catch (error) {

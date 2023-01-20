@@ -4,7 +4,7 @@ import mongooseDelete from "mongoose-delete";
 const schema = new mongoose.Schema(
   {
     productos: [{
-        type:String,
+        type:Object,
     }],
   },
   { timestamps: true }

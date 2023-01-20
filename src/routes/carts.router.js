@@ -1,26 +1,15 @@
 import { Router } from "express";
-import carts from "../dao/CartsManager.js"
+import * as CartsController from "../controllers/carts.controller.js"
 
 const router=Router();
 
-router.get('/',(req,res)=>{
-    res.json(carts.getCarts());
-})
+router.get('/',CartsController.getCarts)
 
-router.get('/:id',(req,res)=>{
-    const {id} = req.params;
-    res.json(carts.getCartById(id))
-});
+router.get('/:id',CartsController.getCartByID);
 
-router.post('/',(req,res)=>{
-    carts.addToCart(req.body);
-    res.status(201).json(carts);
-})
-router.post('/:cid/product/:pid',(req,res)=>{
-    const {cid,pid} = req.params;
-    
-    carts.addProduct(pid,quantity)
-})
+router.post('/',CartsController.createCart)
+
+router.post('/:cid/product/:pid',CartsController.addProductToCart)
 
 
 

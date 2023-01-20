@@ -27,9 +27,12 @@ export async function createCart(data){
         throw new Error(error.message)
     }
 }
+
+
 export async function updateCart(id,data){
     try {
-        
+        const updatedUser = await CartsModel.findByIdAndUpdate(id, {$set: { productos: data }}, { new: true });
+        return updatedUser;
     } catch (error) {
         throw new Error(error.message)
     }

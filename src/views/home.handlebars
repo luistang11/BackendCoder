@@ -1,14 +1,14 @@
 <h1>Productos</h1>
 <div>
-    {{#each products}}
-        <p>id: {{this.id}}</p>
-        <p>title: {{this.title}}</p>
-        <p>description: {{this.description}}</p>
-        <p>code: {{this.code}}</p>
-        <p>price: {{this.price}}</p>
-        <p>status: {{this.status}}</p>
-        <p>stock: {{this-stock}}</p>
-        <p>thumbnail: {{this.thumbnail}}</p>
+    {{#each data}}
+        <p>id: {{_id}}</p>
+        <p>title: {{title}}</p>
+        <p>description: {{description}}</p>
+        <p>code: {{code}}</p>
+        <p>price: {{price}}</p>
+        <p>status: {{status}}</p>
+        <p>stock: {{stock}}</p>
+        <p>thumbnail: {{thumbnail}}</p>
         <h2>----------</h2>
     {{/each}}  
 </div>

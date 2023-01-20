@@ -1,50 +1,13 @@
 import { Router } from "express";
-import productos from "../ProductManager.js"
+import {socketServer} from '../app.js'
+import * as ProductsController from "../controllers/products.controller.js";
 
 const router=Router();
 
-
-router.get('/',(req,res)=>{
-    const allProducts =JSON.parse(productos.getProducts())
-    const {limit}=req.query;
-
-    //verifico si el valor del limite es un numero valido
-    if(limit===false || isNaN(limit)){
-       res.json(allProducts);  
-    }
-    else{
-        res.json(allProducts.slice(0,limit))
-    }
-})
-
-
-router.get("/:id", (req, res) => {
-    const {id}=req.params;
-    const oneProduct =productos.getProductById(Number(id))
-    console.log(oneProduct);-
-    res.json(oneProduct); 
-    
-});
-router.post('/',(req,res)=>{
-    productos.addProduct(req.body)
-    res.status(201).json(productos.getProducts());
-    const productsList = productos.getProducts();
-    req.io.emit('listChange', productsList);
-})
-
-router.delete('/:id', (req, res)=>{
-    const {id}=req.params;
-    productos.deleteProduct(Number(id))
-    res.status(200).json(productos.getProducts());
-    const productsList = productos.getProducts();
-    req.io.emit('listChange', productsList);
-})
-router.put('/:id', (req, res)=>{
-    const {id}=req.params;
-    productos.updateProduct(Number(id),req.body)
-    res.status(200).json(productos.getProducts());
-    const productsList = productos.getProducts();
-    req.io.emit('listChange', productsList);
-})
+router.get('/',ProductsController.getProducts)
+router.get("/:idProducto",ProductsController.getProduct);
+router.post('/',ProductsController.createProduct)
+router.delete('/:idProducto',ProductsController.deleteProduct)
+router.put('/:idProducto', ProductsController.updateProduct)
 
 export default router;

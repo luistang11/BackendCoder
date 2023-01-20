@@ -1,0 +1,21 @@
+<h1>Chatea con nosotros</h1>
+<div><p id="name"></p></div>
+
+<div>
+  <input id ="message" type="text">
+  <button id="submit">Enviar</button>
+</div>
+
+<div>
+  <div>
+    {{#each data}}
+      <p>{{user}}: {{message}}</p>
+    {{/each}}
+  </div>
+  <p id="messages"></p>
+</div>
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="../public/js/socketChat.js"></script>

@@ -4,6 +4,7 @@ import { STATUS } from "../constants/constants.js";
 export async function getCarts(req, res) {
   try {
     const response = await CartService.getCarts();
+
     res.json({
       carts: response,
       status: STATUS.SUCCESS,
@@ -20,6 +21,7 @@ export async function getCartByID(req, res) {
   try {
     const { cid } = req.params;
     const response = await CartService.getCart(cid);
+    
     res.json({
       cart: response,
       status: STATUS.SUCCESS,

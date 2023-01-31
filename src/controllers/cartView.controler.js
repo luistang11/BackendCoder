@@ -4,7 +4,7 @@ export async function getCartByID(req, res) {
   try {
     const { cid } = req.params;
     const response = await CartService.getCart(cid);
-    res.render("home", { ...response });
+    res.render("cart", { ...response });
   } catch (error) {
     throw new Error(error.message);
   }

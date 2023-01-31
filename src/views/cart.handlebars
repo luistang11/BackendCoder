@@ -1,6 +1,13 @@
 <h1>Carrito con id: {{_id}}</h1>
 <h2>Productos:</h2>
 {{#each productos}}
-    <p>id: {{}}</p>
-    <p>canditdad: {{quantity}}</p>
+    <p>id: {{_id}}</p>
+    <p>title: {{title}}</p>
+    <p>description: {{description}}</p>
+    <p>code: {{code}}</p>
+    <p>price: {{price}}</p>
+    <p>status: {{status}}</p>
+    <p>stock: {{stock}}</p>
+    <p>thumbnail: {{thumbnail}}</p>
+    <h2>----------</h2>
 {{/each}}

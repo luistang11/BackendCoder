@@ -9,7 +9,6 @@ export async function getCarts(){
         throw new Error(error.message)
     }
 }
-
 export async function getCart(idCart){
     try {
         const cart= await CartsModel.findById(idCart);
@@ -18,7 +17,6 @@ export async function getCart(idCart){
         throw new Error(error.message)
     }
 }
-
 export async function createCart(data){
     try {
         const cart=await CartsModel.create(data);
@@ -27,8 +25,6 @@ export async function createCart(data){
         throw new Error(error.message)
     }
 }
-
-
 export async function updateCart(id,data){
     try {
         const updatedUser = await CartsModel.findByIdAndUpdate(id, {$set: { productos: data }}, { new: true });
@@ -38,4 +34,10 @@ export async function updateCart(id,data){
     }
 
 }
-
+export async function deleteCart(id){
+    try {
+        await CartsModel.delete({ _id: id });
+      } catch (error) {
+        throw new Error(error.message);
+      }
+}

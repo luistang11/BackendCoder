@@ -4,6 +4,7 @@ import { engine } from "express-handlebars";
 
 import productsRouter from "./routes/products.router.js";
 import cartsRouter from "./routes/carts.router.js";
+import cartRouter from "./routes/cartView.router.js";
 import realTimeRouter from "./routes/realtime.router.js";
 import homeRouter from "./routes/home.router.js";
 import messagesRouter from "./routes/messages.router.js";
@@ -22,7 +23,7 @@ const PORT = 8080;
 
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
-
+app.use("/cart",cartRouter)
 app.use("/realtimeproducts", realTimeRouter);
 app.use("/chat", messagesRouter);
 app.use("/", homeRouter);

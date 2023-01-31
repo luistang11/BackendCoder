@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import mongooseDelete from "mongoose-delete";
-
+import pagination from "mongoose-paginate-v2";
 
 const schema = new mongoose.Schema(
   {
@@ -37,6 +37,7 @@ const schema = new mongoose.Schema(
   { timestamps: true }
 );
 
+schema.plugin(pagination);
 schema.plugin(mongooseDelete, { deletedAt: true });
 
 export const ProductsModel = mongoose.model("products", schema);

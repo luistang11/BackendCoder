@@ -1,6 +1,8 @@
 import express from "express";
 import { Server } from "socket.io";
 import { engine } from "express-handlebars";
+import cookie from "cookie-parser";
+
 
 import productsRouter from "./routes/products.router.js";
 import cartsRouter from "./routes/carts.router.js";
@@ -15,9 +17,11 @@ const app = express();
 app.use(express.json()); //POST Body
 app.use(express.urlencoded({ extended: true })); //Query
 app.use("/public", express.static("public"));
+app.use(cookie())
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
+
 
 const PORT = 8080;
 

@@ -52,9 +52,8 @@ export async function createCart(req, res) {
 
 export async function addProductToCart(req, res) {
   try {
-    const { cid } = req.params; //id cart
+    const { cid,pid } = req.params; //id cart, producto id
     const cart = await CartService.getCart(cid);
-    const { pid } = req.params; //producto id
     cart.productos.push(pid)
     cart.save();
     res.status(201).json({

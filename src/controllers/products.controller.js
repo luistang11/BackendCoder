@@ -9,7 +9,6 @@ export async function getProducts(req, res) {
     res.json({
         products: response,
         status:STATUS.SUCCESS,
-
     });
   } catch (error) {
     res.status(400).json({ 

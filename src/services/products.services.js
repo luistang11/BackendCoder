@@ -1,10 +1,7 @@
 import {ProductsModel} from '../dao/models/products.models.js'
 
-export async function getProducts(limit, page,sort,query){
+export async function getProducts(limit=10, page,sort,query){
     try {
-        if(!limit){
-            limit=10;
-        }
         const product= await ProductsModel.paginate({},{limit,page,sort,query,lean:true})
         return product
     } catch (error) {

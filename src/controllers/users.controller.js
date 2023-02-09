@@ -1,6 +1,11 @@
 import * as UserService from "../services/users.service.js";
 
 
+
+export function obtenerVistaRegister(req,res){
+  res.render('register',{title:"Register"});
+}
+
 export async function createUser(req, res) {
     try {
       const data = req.body;

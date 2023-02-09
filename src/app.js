@@ -11,6 +11,7 @@ import cartsRouter from "./routes/carts.router.js";
 import cartRouter from "./routes/cartView.router.js";
 import realTimeRouter from "./routes/realtime.router.js";
 import homeRouter from "./routes/home.router.js";
+import userRouter from "./routes/users.router.js";
 import messagesRouter from "./routes/messages.router.js";
 import { postMessage } from "./services/messages.services.js";
 import "./config/db.js";
@@ -46,6 +47,7 @@ app.use("/cart", cartRouter);
 app.use("/realtimeproducts", realTimeRouter);
 app.use("/chat", messagesRouter);
 app.use("/", homeRouter);
+app.use("/register",userRouter)
 
 const server = app.listen(PORT, () => {
   console.log(`🔥 Listening on port ${PORT}`);

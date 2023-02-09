@@ -1,9 +1,14 @@
 import {getProducts} from "../services/products.services.js";
 
 
-export async function obtenerProductos(req,res){
-    try {
 
+export function obtenerVistaLogin(req,res){
+    res.render('login',{title:"Inicio"});
+}
+
+
+export async function obtenerVistaProductos(req,res){
+    try {
         const {limit, page,sort,query}= req.query;
         const data = await getProducts(limit, page,sort,query);
         res.render('home', {...data});

@@ -1,7 +1,10 @@
 import { Router } from "express";
-import {obtenerProductos} from '../controllers/home.controler.js'
+import * as HomeController from '../controllers/home.controler.js'
 const router=Router();
 
-router.get('/',obtenerProductos)
+router.get('/',HomeController.obtenerVistaLogin)
+
+
+
 
 export default router;

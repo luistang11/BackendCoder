@@ -6,6 +6,6 @@ const router=Router();
 router.get("/", UserController.obtenerVistaRegister);
 router.post("/", UserController.createUser);
 router.get("/:email", auth, UserController.getUser);
-
+router.put("/updatePassword/:email", auth, UserController.updatePassword);
 
 export default router;

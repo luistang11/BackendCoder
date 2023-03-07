@@ -12,9 +12,13 @@ import cartRouter from "./routes/cartView.router.js";
 import realTimeRouter from "./routes/realtime.router.js";
 import homeRouter from "./routes/home.router.js";
 import userRouter from "./routes/users.router.js";
+import githubRouter from "./routes/github.router.js";
+import passportLocalRouter from "./routes/passportLocal.router.js";
+import authRouter  from "./routes/auth.router.js";
 import messagesRouter from "./routes/messages.router.js";
 import { postMessage } from "./services/messages.services.js";
 import "./config/db.js";
+import  passport  from "passport";
 
 const app = express();
 app.use(express.json()); //POST Body
@@ -38,11 +42,19 @@ app.use(session({
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 const PORT = 8080;
 
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
+app.use("/api/passportLocal",passportLocalRouter)
+app.use("/api/users", userRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/github",githubRouter );
+
 app.use("/cart", cartRouter);
 app.use("/realtimeproducts", realTimeRouter);
 app.use("/chat", messagesRouter);
